@@ -8,4 +8,3 @@ fetchMyIP((error, ip) => {
 
   console.log('It worked! Returned IP:' , ip);
 });
-fetchMyIP();
