@@ -28,11 +28,18 @@ const fetchMyIP = function(callback) {
 };
  
 const fetchCoordsByIP = function(ip,callback) {
-  request ,('https://api.freegeoip.app/json/?apikey=174.119.235.188'), function(error, response, body){
+  request ,('https://freegeoip.app/json/invalidIPHere'), function(error, response, body){
     if (error) {
       callback(error, null);
       return;
+    }
+      // if non-200 status, assume server error
+    if (response.statusCode !== 200) {
+      const msg = `Status Code ${response.statusCode} when fetching coordinates for IP. Response: ${body}`;
+      callback(Error(msg), null);
+      return;
   }
-}
+  }
 };
-module.exports = { fetchMyIP, fetchCoordsByIP };
+
+module.exports = { fetchCoordsByIP };
