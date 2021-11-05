@@ -27,4 +27,12 @@ const fetchMyIP = function(callback) {
   });
 };
  
-module.exports = { fetchMyIP };
+const fetchCoordsByIP = function(ip,callback) {
+  request ,('https://api.freegeoip.app/json/?apikey=174.119.235.188'), function(error, response, body){
+    if (error) {
+      callback(error, null);
+      return;
+  }
+}
+};
+module.exports = { fetchMyIP, fetchCoordsByIP };
